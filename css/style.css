@@ -15,11 +15,11 @@ h1 {
     width: 100%;
 }
 .bloco-jogo{
-    max-width:873px;
+    max-width: 1071px;
     display: flex;
     flex-wrap: wrap;
     margin: 47px auto 0 auto;
-    justify-content: space-around;
+    justify-content: center;
 }
 .card{
     width: 117px;
@@ -27,7 +27,7 @@ h1 {
     background-color: #A7E9AF;
     border: 1px solid #99CEA8;
     border-radius: 5px;
-    margin-bottom: 38px;
+    margin: 0 18px 36px 18px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,4 +35,13 @@ h1 {
 .card img {
     width: 100px;
     height: 100px;
+}
+.sumiu {
+    display: none;
+}
+
+@media (max-width: 1023px) {
+    h1{
+        font-size: 36px;
+    }
 }
