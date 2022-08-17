@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+* {
+    box-sizing: border-box;
+}
+body{
+    background-color: #EEF9BF;
+}
+h1 {
+    margin-top: 40px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 56px;
+    font-weight: 700;
+    color: #75B79E;
+    text-align: center;
+    width: 100%;
+}
+.bloco-jogo{
+    max-width:873px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 47px auto 0 auto;
+    justify-content: space-around;
+}
+.card{
+    width: 117px;
+    height: 146px;
+    background-color: #A7E9AF;
+    border: 1px solid #99CEA8;
+    border-radius: 5px;
+    margin-bottom: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card img {
+    width: 100px;
+    height: 100px;
+}
