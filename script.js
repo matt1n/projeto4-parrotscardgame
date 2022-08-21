@@ -13,12 +13,11 @@ let certas = []
 let cronometro = document.querySelector('.cronometro')
 let quantidade = 0;
 const lista = document.querySelector('.lista')
+
 function comecar(){
-
-
+    
     const imgs = ['bobrossparrot','explodyparrot','fiestaparrot','revertitparrot','tripletsparrot','unicornparrot','metalparrot']
     const listaImg = []
-
     tempo = 0
     contador = 0
 
@@ -47,15 +46,14 @@ function comecar(){
 comecar()
 let timer = setInterval(contaTempo, 1000)
 
-const verifica = []
+let verifica = []
 
 function desvirar(){
     verifica[0].children[0].classList.remove('frenteVirado')
     verifica[0].children[1].classList.remove('trasVirado')
     verifica[1].children[0].classList.remove('frenteVirado')
     verifica[1].children[1].classList.remove('trasVirado')
-    verifica.pop()
-    verifica.pop()
+    verifica = []
     console.log('desvira')
 }
 
@@ -94,8 +92,7 @@ function girarVerificar(elemento) {
                 verifica[1].classList.add('certo')
                 certas.push(verifica[0])
                 certas.push(verifica[1])
-                verifica.pop()
-                verifica.pop()
+                verifica = []
             } else if (verifica.length===2){
                 console.log('aqui');
                 setTimeout(desvirar, 1000);
