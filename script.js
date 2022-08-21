@@ -1,43 +1,51 @@
-const lista = document.querySelector('.lista')
-const imgs = ['bobrossparrot','explodyparrot','fiestaparrot','revertitparrot','tripletsparrot','unicornparrot','metalparrot']
-const listaImg = []
-const certas = []
-let cronometro = document.querySelector('.cronometro')
-
-let tempo = 0
-let contador = 0
+function comparador() { 
+    return Math.random() - 0.5; 
+}
 
 function contaTempo(){
     tempo++
     cronometro.innerHTML = tempo+'s';
 }
 
-const abc = setInterval(contaTempo, 1000)
-
-imgs.sort(comparador)
-
+let tempo = 0
+let contador = 0
+let certas = []
+let cronometro = document.querySelector('.cronometro')
 let quantidade = 0;
-while (quantidade%2 !==0 || quantidade>14 || quantidade<4) {
-    quantidade = prompt('Com quantas cartas você quer jogar?');
-}
+const lista = document.querySelector('.lista')
+function comecar(){
 
-for (i=0; i<quantidade/2; i++){
-    listaImg.push(imgs[i])
-    listaImg.push(imgs[i])
-}
-listaImg.sort(comparador)
-function comparador() { 
-	return Math.random() - 0.5; 
-}
 
-for (i=0; i<quantidade; i++) {
-    lista.innerHTML += `<li><div class="card ${listaImg[i]} a${i}" onclick="girarVerificar(this)">
-    <div class="frente face">
-        <img src="media/front.png" alt="Front-parrot">
-    </div>
-    <div class="tras face"><img src="media/${listaImg[i]}.gif"></div>
-    </div></li>`
+    const imgs = ['bobrossparrot','explodyparrot','fiestaparrot','revertitparrot','tripletsparrot','unicornparrot','metalparrot']
+    const listaImg = []
+
+    tempo = 0
+    contador = 0
+
+    imgs.sort(comparador)
+
+    quantidade = 0;
+    while (quantidade%2 !==0 || quantidade>14 || quantidade<4) {
+        quantidade = prompt('Com quantas cartas você quer jogar? \n(4 - 14)');
+    }
+
+    for (i=0; i<quantidade/2; i++){
+        listaImg.push(imgs[i])
+        listaImg.push(imgs[i])
+    }
+    listaImg.sort(comparador)
+
+    for (i=0; i<quantidade; i++) {
+        lista.innerHTML += `<li><div class="card ${listaImg[i]} a${i}" onclick="girarVerificar(this)">
+        <div class="frente face">
+            <img src="media/front.png" alt="Front-parrot">
+        </div>
+        <div class="tras face"><img src="media/${listaImg[i]}.gif"></div>
+        </div></li>`
+    }
 }
+comecar()
+let timer = setInterval(contaTempo, 1000)
 
 const verifica = []
 
@@ -62,6 +70,16 @@ function girar(a){
 }
 function vitoria(){
     alert(`Você ganhou em ${contador} jogadas e em ${tempo}s!`)
+    certas=[]
+    let recomecar = prompt('Deseja jogar novamente? (sim ou não)')
+    while (recomecar !== 'sim' && recomecar !=='não') {
+        recomecar = prompt('Deseja jogar novamente? (sim ou não)')
+    }
+    if (recomecar==="sim"){
+        lista.innerHTML=''
+        comecar()
+        timer = setInterval(contaTempo, 1000)
+    }
 }
 
 function girarVerificar(elemento) {
@@ -84,7 +102,7 @@ function girarVerificar(elemento) {
             }
         }
         if (certas.length===Number(quantidade)){
-            clearInterval(1)
+            clearInterval(timer)
             setTimeout(vitoria, 500)
         }
     }
